@@ -1,7 +1,8 @@
+import jsonp from 'jsonp';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { PhotoList, PhotoView } from 'components';
-import jsonp from 'jsonp';
+import { getPhotoID } from 'utils';
 
 export default class Router extends Component {
     state = {
@@ -35,6 +36,13 @@ export default class Router extends Component {
         });
     };
 
+    getCurrent(id) {
+        return (
+            this.state.photos.filter(item => id === getPhotoID(item.link))[0] ||
+            null
+        );
+    }
+
     render() {
         return (
             <Switch>
@@ -45,7 +53,15 @@ export default class Router extends Component {
                         return <PhotoList photos={this.state.photos} />;
                     }}
                 />
-                <Route path="/photos/:id" component={PhotoView} />
+
+                <Route
+                    path="/photos/:id"
+                    component={props => {
+                        const current = this.getCurrent(props.match.params.id);
+
+                        return <PhotoView data={current} />;
+                    }}
+                />
             </Switch>
         );
     }
