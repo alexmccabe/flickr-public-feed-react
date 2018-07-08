@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import PhotoImage from './PhotoImage/PhotoImage';
-import PhotoDetail from './PhotoDetail/PhotoDetail';
+import PhotoImage from './PhotoItemImage/PhotoItemImage';
+import PhotoDetail from './PhotoItemDetail/PhotoItemDetail';
 
 export default class PhotoItem extends Component {
     static defaultProps = {};

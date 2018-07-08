@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { getPhotoID } from 'utils';
 
-export default class PhotoDetail extends Component {
+export default class PhotoItemDetail extends Component {
     static propTypes = {
         data: PropTypes.object.isRequired
     };
