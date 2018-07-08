@@ -1,2 +1,2 @@
-export * from './PhotoDetails';
+export * from './PhotoView';
 export * from './PhotoList';

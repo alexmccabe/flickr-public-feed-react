@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import PhotoItem from './PhotoItem/PhotoItem';
+
+import { getPhotoID } from 'utils';
 
 export default class PhotoList extends Component {
     static defaultProps = {};
@@ -10,15 +13,17 @@ export default class PhotoList extends Component {
 
     state = {};
 
+    renderList = () => {
+        return this.props.photos
+            ? this.props.photos.map(photo => {
+                const id = getPhotoID(photo.link);
+
+                return <PhotoItem key={id} data={photo} id={id} />;
+            })
+            : null;
+    };
+
     render() {
-        return (
-            <div className="photolist">
-                {this.props.photos
-                    ? this.props.photos.map((photo, index) => {
-                        return <div key={index} />;
-                    })
-                    : null}
-            </div>
-        );
+        return <div className="photolist">{this.renderList()}</div>;
     }
 }
