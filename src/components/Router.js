@@ -59,7 +59,7 @@ export default class Router extends Component {
                     component={props => {
                         const current = this.getCurrent(props.match.params.id);
 
-                        return <PhotoView data={current} />;
+                        return current ? <PhotoView data={current} /> : null;
                     }}
                 />
             </Switch>
