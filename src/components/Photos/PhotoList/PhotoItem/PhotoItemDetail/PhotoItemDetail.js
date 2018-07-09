@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { getPhotoID } from 'utils';
+import { formatDate, getPhotoID, getPhotoUser } from 'utils';
 
 export default class PhotoItemDetail extends Component {
     static propTypes = {
@@ -24,7 +24,9 @@ export default class PhotoItemDetail extends Component {
                 </header>
 
                 <div className="photo-meta">
-                    <div className="photo-date">{photo.published}</div>
+                    <div className="photo-date">
+                        {formatDate(photo.published)}
+                    </div>
                     <div className="photo-author">
                         <a
                             href={`https://www.flickr.com/people/${
@@ -32,7 +34,7 @@ export default class PhotoItemDetail extends Component {
                             }/`}
                             target="_blank"
                         >
-                            {photo.author}
+                            {getPhotoUser(photo.author)}
                         </a>
                     </div>
 
