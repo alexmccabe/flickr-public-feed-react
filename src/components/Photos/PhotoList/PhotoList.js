@@ -14,7 +14,7 @@ export default class PhotoList extends Component {
     state = {};
 
     renderList = () => {
-        return this.props.photos
+        return this.props.photos && this.props.photos.length
             ? this.props.photos.map(photo => {
                 const id = getPhotoID(photo.link);
 
