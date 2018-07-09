@@ -25,7 +25,7 @@ export default class Router extends Component {
 
     getData = () => {
         let url =
-            'https://api.flickr.com/services/feeds/photos_public.gne?tags=kitten&format=json';
+            'https://api.flickr.com/services/feeds/photos_public.gne?tags=potato&format=json';
 
         jsonp(url, { name: 'jsonFlickrFeed' }, (err, data) => {
             if (err) {
