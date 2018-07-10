@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import PhotoImage from './PhotoItemImage/PhotoItemImage';
 import PhotoDetail from './PhotoItemDetail/PhotoItemDetail';
 
+import styles from './photo-item.module.scss';
+
 export default class PhotoItem extends Component {
     static defaultProps = {};
 
@@ -22,7 +24,7 @@ export default class PhotoItem extends Component {
         const photo = this.props.data;
 
         return (
-            <div className="photo-item">
+            <div className={styles.photoItem}>
                 <PhotoImage
                     alt={this.getAltText(photo)}
                     internalLinkUrl={`/photos/${this.props.id}`}

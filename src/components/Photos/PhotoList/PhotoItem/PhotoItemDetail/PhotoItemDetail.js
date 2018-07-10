@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { formatDate, getPhotoID, getPhotoUser } from 'utils';
+import { SvgIcons } from 'components';
 
+import styles from './photo-item-detail.module.scss';
 export default class PhotoItemDetail extends Component {
     static propTypes = {
         data: PropTypes.object.isRequired
@@ -16,30 +18,57 @@ export default class PhotoItemDetail extends Component {
         const id = getPhotoID(photo.link);
 
         return (
-            <div className="photo-detail">
-                <header className="photo-header">
+            <div className={styles.details}>
+                <header className={styles.header}>
                     <Link to={`/photos/${id}`}>
-                        <h2 className="photo-title">{photo.title}</h2>
+                        <h2 className={styles.title}>{photo.title}</h2>
                     </Link>
                 </header>
 
-                <div className="photo-meta">
-                    <div className="photo-date">
-                        {formatDate(photo.published)}
+                <div className={styles.meta}>
+                    <div className={[styles.date, styles.metaItem].join(' ')}>
+                        <SvgIcons
+                            name="clock"
+                            className={[styles.icon, styles.iconDate].join(' ')}
+                        />
+                        Published: {formatDate(photo.published)}
                     </div>
-                    <div className="photo-author">
+                    <div className={[styles.author, styles.metaItem].join(' ')}>
                         <a
                             href={`https://www.flickr.com/people/${
                                 photo.author_id
                             }/`}
                             target="_blank"
+                            className="button button--small"
                         >
+                            <SvgIcons
+                                name="user"
+                                className={[
+                                    styles.icon,
+                                    styles.iconAuthor
+                                ].join(' ')}
+                            />
                             {getPhotoUser(photo.author)}
                         </a>
                     </div>
 
-                    <div className="photo-link">
-                        <a href={photo.link} target="_blank">
+                    <div
+                        className={[styles.flickrLink, styles.metaItem].join(
+                            ' '
+                        )}
+                    >
+                        <a
+                            href={photo.link}
+                            target="_blank"
+                            className="button button--small"
+                        >
+                            <SvgIcons
+                                name="flickr"
+                                className={[
+                                    styles.icon,
+                                    styles.iconFlickr
+                                ].join(' ')}
+                            />
                             View on Flickr
                         </a>
                     </div>

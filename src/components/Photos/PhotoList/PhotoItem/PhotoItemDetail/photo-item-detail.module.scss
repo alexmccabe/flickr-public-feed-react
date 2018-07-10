@@ -1,0 +1,55 @@
+@import '../../../../../scss/includes';
+
+.details {
+    padding-left: pxtorem(15);
+    width: 100%;
+}
+
+.header {
+    margin-bottom: pxtorem(10);
+}
+
+.title {
+    font-size: pxtoem(20);
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.metaItem {
+    margin-left: pxtorem(15px);
+    order: 1;
+
+    &:first-child {
+        @include breakpoint(0, 800px) {
+            margin-bottom: 5px;
+        }
+    }
+
+    &:nth-child(2) {
+        margin-left: 0;
+    }
+}
+
+.date {
+    width: 100%;
+
+    @include breakpoint(800px) {
+        order: 2;
+        width: auto;
+    }
+}
+
+.flickrLink {
+    @include breakpoint(800px) {
+        order: 3;
+    }
+}
+
+.icon {
+    display: inline-block;
+    margin-right: pxtorem(10px);
+    vertical-align: middle;
+}

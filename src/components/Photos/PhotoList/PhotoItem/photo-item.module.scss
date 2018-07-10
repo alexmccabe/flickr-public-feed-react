@@ -1,0 +1,13 @@
+@import '../../../../scss/includes';
+
+.photoItem {
+    display: flex;
+
+    & + & {
+        margin-top: pxtorem(25);
+    }
+
+    &:hover {
+        background-color: $swatch-primary;
+    }
+}
