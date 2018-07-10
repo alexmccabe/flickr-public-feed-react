@@ -1,7 +1,7 @@
 import jsonp from 'jsonp';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { PhotoList, PhotoView } from 'components';
+import { Header, PhotoList, PhotoView } from 'components';
 import { getPhotoID } from 'utils';
 
 export default class Router extends Component {
@@ -45,6 +45,9 @@ export default class Router extends Component {
 
     render() {
         return (
+            <div className="container">
+                <Header onSearch={this.onSearch} />
+
             <Switch>
                 <Route
                     exact
@@ -63,6 +66,7 @@ export default class Router extends Component {
                     }}
                 />
             </Switch>
+            </div>
         );
     }
 }
