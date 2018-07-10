@@ -1,7 +1,9 @@
 @import '../../../../../scss/includes';
 
 .details {
-    padding-left: pxtorem(15);
+    display: flex;
+    flex-direction: column;
+    padding: pxtorem(10) pxtorem(15);
     width: 100%;
 }
 
@@ -10,11 +12,12 @@
 }
 
 .title {
-    font-size: pxtoem(20);
+    font-size: pxtoem(25);
 }
 
 .meta {
     display: flex;
+    margin-top: auto;
     flex-wrap: wrap;
 }
 
