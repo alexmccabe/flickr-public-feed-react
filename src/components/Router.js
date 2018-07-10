@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import { Header, PhotoList, PhotoView } from 'components';
 import { getPhotoID } from 'utils';
 
+import fakeResults from 'results.json';
+
 export default class Router extends Component {
     state = {
         photos: []
@@ -15,7 +17,7 @@ export default class Router extends Component {
 
     handleApiResponse = data => {
         this.setState({
-            photos: [...this.state.photos, ...data.items]
+            photos: data.items
         });
     };
 
@@ -23,9 +25,20 @@ export default class Router extends Component {
         console.log(err);
     };
 
-    getData = () => {
-        let url =
-            'https://api.flickr.com/services/feeds/photos_public.gne?tags=potato&format=json';
+    onSearch = data => {
+        if (data.data.searchTerm && data.data.searchTerm.length) {
+            this.getData(data.data.searchTerm);
+        } else {
+            this.getData();
+        }
+    };
+
+    getData = (searchTerm = 'potato') => {
+        return this.handleApiResponse(fakeResults);
+        const baseUrl =
+            'https://api.flickr.com/services/feeds/photos_public.gne?format=json';
+
+        const url = `${baseUrl}&tags=${searchTerm}`;
 
         jsonp(url, { name: 'jsonFlickrFeed' }, (err, data) => {
             if (err) {
@@ -48,24 +61,28 @@ export default class Router extends Component {
             <div className="container">
                 <Header onSearch={this.onSearch} />
 
-            <Switch>
-                <Route
-                    exact
-                    path="/"
-                    component={() => {
-                        return <PhotoList photos={this.state.photos} />;
-                    }}
-                />
+                <Switch>
+                    <Route
+                        exact
+                        path="/"
+                        component={() => {
+                            return <PhotoList photos={this.state.photos} />;
+                        }}
+                    />
 
-                <Route
-                    path="/photos/:id"
-                    component={props => {
-                        const current = this.getCurrent(props.match.params.id);
+                    <Route
+                        path="/photos/:id"
+                        component={props => {
+                            const current = this.getCurrent(
+                                props.match.params.id
+                            );
 
-                        return current ? <PhotoView data={current} /> : null;
-                    }}
-                />
-            </Switch>
+                            return current ? (
+                                <PhotoView data={current} />
+                            ) : null;
+                        }}
+                    />
+                </Switch>
             </div>
         );
     }

@@ -1,0 +1,35 @@
+@import '../../scss/includes';
+
+.form {
+    display: flex;
+    margin-top: pxtorem(50px);
+    width: 100%;
+}
+
+.searchBox,
+.submitButton {
+    font-family: $heading-font-family;
+    font-size: 1.5em;
+    font-weight: $heading-font-weight;
+    text-transform: uppercase;
+}
+
+.searchBox {
+    display: block;
+    flex: 2;
+    padding: pxtorem(15px);
+    text-transform: none;
+    width: 100%;
+}
+
+.submitButton {
+    border: 0;
+    cursor: pointer;
+    flex: 0.5;
+    font-size: 1em;
+    letter-spacing: kerning(60);
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+    }
+}

@@ -1,0 +1,12 @@
+@import '../../scss/includes';
+
+.header {
+    padding-bottom: pxtorem(100);
+    padding-top: pxtorem(100);
+}
+
+.title {
+    font-family: $heading-font-family;
+    font-size: 3rem;
+    font-weight: $heading-font-weight;
+}
