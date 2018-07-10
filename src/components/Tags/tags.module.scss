@@ -1,0 +1,25 @@
+@import '../../scss/includes';
+
+.tagLabel {
+    font-size: 1.2em;
+    letter-spacing: kerning(60);
+    text-transform: uppercase;
+}
+
+.tagsList {
+    display: flex;
+}
+
+.tag + .tag {
+    margin-left: 5px;
+}
+
+.tagLink {
+    background-color: $swatch-primary;
+    border-radius: 4px;
+    color: $swatch-black;
+    display: block;
+    font-size: 0.8em;
+    padding: 5px 8px;
+    text-decoration: none;
+}

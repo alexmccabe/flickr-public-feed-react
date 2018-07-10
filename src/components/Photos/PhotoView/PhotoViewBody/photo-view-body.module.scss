@@ -1,0 +1,6 @@
+.description {
+    p:first-child,
+    p:nth-child(2) {
+        display: none;
+    }
+}
