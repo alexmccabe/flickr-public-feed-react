@@ -13,10 +13,17 @@ export default class PhotoViewHeader extends Component {
     render() {
         return (
             <header className={styles.header}>
+                <Link
+                    className={['no-hover-effect', styles.backButton].join(' ')}
+                    to="/"
+                >
+                    Back
+                </Link>
+
                 <h1 className={styles.title}>{this.props.photo.title}</h1>
 
                 <div className={styles.meta}>
-                    <div className="photo-author">
+                    <div className={[styles.metaItem, styles.author].join(' ')}>
                         <a
                             href={`https://www.flickr.com/people/${
                                 this.props.photo.author_id
@@ -27,14 +34,10 @@ export default class PhotoViewHeader extends Component {
                         </a>
                     </div>
 
-                    <div className="photo-date">
+                    <div className={[styles.metaItem, styles.author].join(' ')}>
                         Published: {formatDate(this.props.photo.published)}
                     </div>
                 </div>
-
-                <Link className={styles.backButton} to="/">
-                    Back
-                </Link>
             </header>
         );
     }

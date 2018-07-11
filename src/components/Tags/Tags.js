@@ -21,7 +21,14 @@ export default class Tags extends Component {
                     {this.props.tags.map((item, index) => {
                         return (
                             <li className={styles.tag} key={index}>
-                                <a href="" className={styles.tagLink}>
+                                <a
+                                    href={`https://www.flickr.com/photos/tags/${item.toLowerCase()}`}
+                                    className={[
+                                        'no-hover-effect',
+                                        styles.tagLink
+                                    ].join(' ')}
+                                    target="_blank"
+                                >
                                     {item}
                                 </a>
                             </li>

@@ -1,6 +1,32 @@
+@import '../../../../scss/includes';
+
+.body {
+    align-items: center;
+    border-bottom: 1px solid $swatch-border-main;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+
+    @include breakpoint(500px) {
+        align-items: flex-start;
+        flex-direction: row;
+    }
+}
+
+.imageContainer {
+    width: 100%;
+
+    @include breakpoint(500px) {
+        width: auto;
+    }
+}
+
 .description {
-    p:first-child,
-    p:nth-child(2) {
-        display: none;
+    margin-top: 10px;
+
+    @include breakpoint(500px) {
+        margin-top: 0;
+        padding-left: 15px;
     }
 }

@@ -1,7 +1,9 @@
 @import '../../scss/includes';
 
 .tagLabel {
+    font-famly: $heading-font-family;
     font-size: 1.2em;
+    font-weight: $heading-font-weight;
     letter-spacing: kerning(60);
     text-transform: uppercase;
 }
@@ -17,9 +19,13 @@
 .tagLink {
     background-color: $swatch-primary;
     border-radius: 4px;
-    color: $swatch-black;
+    color: $swatch-white;
     display: block;
     font-size: 0.8em;
     padding: 5px 8px;
-    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+        background-color: $swatch-primary-alt;
+    }
 }

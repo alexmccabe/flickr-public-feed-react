@@ -1,9 +1,89 @@
+@import '../../../../scss/includes';
+
 .header {
+    border-bottom: 1px solid $swatch-border-main;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
     position: relative;
 }
 
+.title {
+    $map: (
+        0px: 20px,
+        380px: 20px,
+        800px: 35px
+    );
+    @include poly-fluid-sizing('font-size', $map);
+
+    font-family: $heading-font-family;
+    font-weight: $heading-font-weight;
+    max-width: calc(100% - 89px);
+    text-transform: uppercase;
+}
+
+.metaItem {
+    position: relative;
+
+    @include breakpoint(500px) {
+        display: inline-block;
+    }
+
+    & + & {
+        @include breakpoint(500px) {
+            margin-left: 5px;
+            padding-left: 7px;
+        }
+
+        &::before {
+            @include breakpoint(500px) {
+                background-color: darken($swatch-border-main, 10%);
+                content: '';
+                display: block;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 2px;
+            }
+        }
+    }
+}
+
+.author a {
+    color: $swatch-primary-alt;
+}
+
 .backButton {
+    background-color: $swatch-primary;
+    border-radius: 3px;
+    color: $swatch-white;
+    height: 38px;
+    padding: pxtorem(8) pxtorem(10);
     position: absolute;
     right: 0;
     top: 0;
+    transition: background-color 0.2s ease-in-out;
+
+    &::before {
+        background-color: $swatch-primary;
+        border-radius: 3px;
+        content: '';
+        display: block;
+        position: absolute;
+        height: 28px;
+        left: -13px;
+        top: 5px;
+        transform: rotate(-45deg);
+        transition: background-color 0.2s ease-in-out;
+        width: 28px;
+        z-index: -1;
+    }
+
+    &:hover {
+        background-color: $swatch-primary-alt;
+
+        &::before {
+            background-color: $swatch-primary-alt;
+        }
+    }
 }
