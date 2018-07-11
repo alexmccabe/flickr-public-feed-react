@@ -71,3 +71,5 @@ npm run build
 -   Higher quality images, if possible
 
 -   Social sharing, there are some lovely images and I'd like people to see them
+
+-   The ellipses overflow doesn't work in some browsers, and I would've happily spent time making a cross-browser solution that worked correctly.
