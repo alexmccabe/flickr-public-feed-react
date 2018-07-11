@@ -6,11 +6,13 @@ import Footer from './PhotoViewFooter/PhotoViewFooter';
 
 export default class PhotoView extends Component {
     static propTypes = {
-        data: PropTypes.object.isRequired
+        data: PropTypes.object.isRequired,
+        history: PropTypes.object
     };
 
     render() {
         const photo = this.props.data;
+
         return (
             <article className="photoview">
                 <Header photo={photo} />

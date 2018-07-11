@@ -83,7 +83,12 @@ class Router extends Component {
 
                             return current ? (
                                 <PhotoView data={current} />
-                            ) : null;
+                            ) : (
+                                <p>
+                                    Invalid photo selected, try searching for a
+                                    new one!
+                                </p>
+                            );
                         }}
                     />
                 </Switch>

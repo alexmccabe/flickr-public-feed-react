@@ -35,7 +35,7 @@ export default class PhotoViewFooter extends Component {
 
                 <div className={styles.description}>
                     {paragraphs.length === 3 ? (
-                        <p>paragraphs[2]</p>
+                        <p>{paragraphs[2]}</p>
                     ) : (
                         <em>No description provided</em>
                     )}
