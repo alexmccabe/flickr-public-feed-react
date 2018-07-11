@@ -14,7 +14,9 @@ export default class PhotoItem extends Component {
         id: PropTypes.any.isRequired
     };
 
-    state = {};
+    state = {
+        hovered: false
+    };
 
     getAltText = photo => {
         return `${photo.title} by ${photo.author}`;
@@ -24,13 +26,17 @@ export default class PhotoItem extends Component {
         const photo = this.props.data;
 
         return (
-            <div className={styles.photoItem}>
+            <div
+                className={styles.photoItem}
+                onMouseEnter={() => this.setState({ hovered: true })}
+                onMouseLeave={() => this.setState({ hovered: false })}
+            >
                 <PhotoImage
                     alt={this.getAltText(photo)}
                     internalLinkUrl={`/photos/${this.props.id}`}
                     imageUri={photo.media.m}
                 />
-                <PhotoDetail data={photo} />
+                <PhotoDetail data={photo} hovered={this.state.hovered} />
             </div>
         );
     }

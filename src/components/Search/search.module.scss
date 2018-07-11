@@ -15,21 +15,35 @@
 }
 
 .searchBox {
+    border: 1px solid $swatch-border-main;
+    border-right: 0;
     display: block;
     flex: 2;
-    padding: pxtorem(15px);
+    padding: pxtorem(8px);
     text-transform: none;
     width: 100%;
+
+    @include breakpoint(800px) {
+        padding: pxtorem(15px);
+    }
 }
 
 .submitButton {
+    background-color: $swatch-primary;
     border: 0;
+    border-left: 0;
+    color: $swatch-white;
     cursor: pointer;
-    flex: 0.5;
+    flex: 1;
     font-size: 1em;
     letter-spacing: kerning(60);
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
+        background-color: $swatch-primary-alt;
+    }
+
+    @include breakpoint(800px) {
+        flex: 0.5;
     }
 }

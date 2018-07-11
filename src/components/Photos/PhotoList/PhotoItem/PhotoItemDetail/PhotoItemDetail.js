@@ -8,21 +8,25 @@ import { SvgIcons } from 'components';
 import styles from './photo-item-detail.module.scss';
 export default class PhotoItemDetail extends Component {
     static propTypes = {
-        data: PropTypes.object.isRequired
+        data: PropTypes.object.isRequired,
+        hovered: PropTypes.bool
     };
-
-    state = {};
 
     render() {
         const photo = this.props.data;
         const id = getPhotoID(photo.link);
 
         return (
-            <div className={styles.details}>
+            <div
+                className={[
+                    styles.details,
+                    this.props.hovered ? styles.parentHovered : null
+                ].join(' ')}
+            >
                 <header className={styles.header}>
-                    <Link to={`/photos/${id}`}>
-                        <h2 className={styles.title}>{photo.title}</h2>
-                    </Link>
+                    <h2 className={styles.title}>
+                        <Link to={`/photos/${id}`}>{photo.title}</Link>
+                    </h2>
                 </header>
 
                 <div className={styles.meta}>
@@ -31,7 +35,7 @@ export default class PhotoItemDetail extends Component {
                             name="clock"
                             className={[styles.icon, styles.iconDate].join(' ')}
                         />
-                        Published: {formatDate(photo.published)}
+                        <span className={styles.dateLabel}>Published: </span>{formatDate(photo.published)}
                     </div>
                     <div className={[styles.author, styles.metaItem].join(' ')}>
                         <a

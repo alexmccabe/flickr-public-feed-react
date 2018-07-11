@@ -19,18 +19,15 @@
  *     - @import '~styles/includes';
  */
 
-@import 'config/grid',
-        'config/site',
-        'config/breakpoints',
-        'config/fonts',
-        'config/theme';
+@import 'config/grid', 'config/site', 'config/breakpoints', 'config/fonts',
+    'config/theme';
 
 @import 'extends/all';
 @import 'functions/all';
 @import 'mixins/all';
 
+@import 'libs/polyfluid-sizing';
+
 @import 'utilities';
 
-@import 'grid/functions',
-        'grid/mixins';
-
+@import 'grid/functions', 'grid/mixins';

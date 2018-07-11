@@ -29,7 +29,10 @@ export default class PhotoItemImage extends Component {
 
     render() {
         return this.props.internalLinkUrl ? (
-            <Link to={this.props.internalLinkUrl} className={styles.imageLink}>
+            <Link
+                to={this.props.internalLinkUrl}
+                className={['no-hover-effect', styles.imageLink].join(' ')}
+            >
                 {this.renderImage()}
             </Link>
         ) : (

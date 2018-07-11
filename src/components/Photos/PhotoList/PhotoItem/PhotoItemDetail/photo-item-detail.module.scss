@@ -1,29 +1,82 @@
 @import '../../../../../scss/includes';
 
+/*
+ * 1. 150px is the width of the image, ideally this should be some
+ *    sort of variable.
+ * 2. Two pixels smaller margin-bottom to account for the need for 2px padding
+ *    to show the hover effect.
+*/
+
 .details {
+    color: $swatch-primary;
     display: flex;
+    padding: pxtorem(5) pxtorem(10);
     flex-direction: column;
-    padding: pxtorem(10) pxtorem(15);
-    width: 100%;
+    width: calc(100% - 150px); /* [1] */
+
+    @include breakpoint(800px) {
+        padding: pxtorem(10) pxtorem(15);
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
 }
 
 .header {
-    margin-bottom: pxtorem(10);
+    display: flex;
+    margin-bottom: pxtorem(8); /* [2] */
 }
 
 .title {
-    font-size: pxtoem(25);
+    $map: (
+        380px: 18px,
+        800px: 25px
+    );
+    @include poly-fluid-sizing('font-size', $map);
+
+    color: $swatch-primary-alt;
+    display: inline-block;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: pxtorem(2); /* [2] */
+    white-space: nowrap;
+
+    .parentHovered & {
+        color: $swatch-white;
+
+        &::after {
+            opacity: 1;
+        }
+    }
 }
 
 .meta {
+    $map: (
+        380px: 12px,
+        800px: 16px
+    );
+    @include poly-fluid-sizing('font-size', $map);
+
     display: flex;
     margin-top: auto;
     flex-wrap: wrap;
+
+    .parentHovered & {
+        color: $swatch-white;
+    }
 }
 
 .metaItem {
-    margin-left: pxtorem(15px);
+    width: 100%;
     order: 1;
+
+    @include breakpoint(550px) {
+        margin-left: pxtorem(15px);
+        width: auto;
+    }
 
     &:first-child {
         @include breakpoint(0, 800px) {
@@ -37,11 +90,22 @@
 }
 
 .date {
+    transition: color 0.2s ease-in-out;
     width: 100%;
+
+    @include breakpoint(0, 800px) {
+        margin-left: 0;
+    }
 
     @include breakpoint(800px) {
         order: 2;
         width: auto;
+    }
+}
+
+.dateLabel {
+    @include breakpoint(0, 550px) {
+        display: none;
     }
 }
 
@@ -53,6 +117,7 @@
 
 .icon {
     display: inline-block;
-    margin-right: pxtorem(10px);
+    margin-right: pxtorem(5px);
+    margin-top: -3px;
     vertical-align: middle;
 }

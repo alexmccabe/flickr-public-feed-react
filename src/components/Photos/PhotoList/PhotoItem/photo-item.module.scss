@@ -2,12 +2,17 @@
 
 .photoItem {
     display: flex;
+    transition: background-color 0.2s ease-in-out;
 
     & + & {
         margin-top: pxtorem(25);
     }
 
     &:hover {
-        background-color: $swatch-primary;
+        background-color: $swatch-primary-alt;
+
+        .title {
+            color: red;
+        }
     }
 }
