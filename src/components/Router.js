@@ -1,12 +1,15 @@
 import jsonp from 'jsonp';
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Header, PhotoList, PhotoView } from 'components';
 import { getPhotoID } from 'utils';
 
-import fakeResults from 'results.json';
+class Router extends Component {
+    static propTypes = {
+        history: PropTypes.object
+    };
 
-export default class Router extends Component {
     state = {
         photos: []
     };
@@ -31,10 +34,11 @@ export default class Router extends Component {
         } else {
             this.getData();
         }
+
+        this.props.history.push('/');
     };
 
     getData = (searchTerm = 'potato') => {
-        return this.handleApiResponse(fakeResults);
         const baseUrl =
             'https://api.flickr.com/services/feeds/photos_public.gne?format=json';
 
@@ -87,3 +91,5 @@ export default class Router extends Component {
         );
     }
 }
+
+export default withRouter(Router);
