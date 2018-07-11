@@ -27,9 +27,16 @@ export default class PhotoItem extends Component {
 
         return (
             <div
-                className={styles.photoItem}
+                className={[
+                    styles.photoItem,
+                    this.state.hovered ? styles.isHovered : null
+                ]
+                    .filter(item => item)
+                    .join(' ')}
                 onMouseEnter={() => this.setState({ hovered: true })}
                 onMouseLeave={() => this.setState({ hovered: false })}
+                onTouchStart={() => this.setState({ hovered: false })}
+                onTouchEnd={() => this.setState({ hovered: false })}
             >
                 <PhotoImage
                     alt={this.getAltText(photo)}

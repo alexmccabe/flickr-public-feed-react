@@ -8,7 +8,7 @@
         margin-top: pxtorem(25);
     }
 
-    &:hover {
+    &.isHovered {
         background-color: $swatch-primary-alt;
 
         .title {
