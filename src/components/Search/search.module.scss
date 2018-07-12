@@ -15,7 +15,9 @@
 }
 
 .searchBox {
+    appearance: none;
     border: 1px solid $swatch-border-main;
+    border-radius: 0;
     border-right: 0;
     display: block;
     flex: 2;
